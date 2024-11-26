@@ -1,19 +1,11 @@
 package com.example.soap;
 
-import org.apache.cxf.Bus;
-import org.apache.cxf.BusFactory;
-import org.apache.cxf.jaxws.EndpointImpl;
+import javax.xml.ws.Endpoint;
 
 public class SoapServicePublisher {
     public static void main(String[] args) {
-        // Initialize the CXF Bus
-        Bus bus = BusFactory.newInstance().createBus();
-        BusFactory.setDefaultBus(bus);
-
-        // Publish the service
-        EndpointImpl endpoint = new EndpointImpl(bus, new SoapServiceImpl());
-        endpoint.publish("http://localhost:8080/soapService");
-
+        // Publish the SOAP service at the specified endpoint
+        Endpoint.publish("http://localhost:8080/soapService", new SoapServiceImpl());
         System.out.println("SOAP Service is running at http://localhost:8080/soapService");
     }
 }

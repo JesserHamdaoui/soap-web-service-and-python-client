@@ -1,5 +1,11 @@
-C:\Users\hamda\Documents\GitHub\soap-web-service-and-python-client\service\src\main\java\com\example\soap\User.java
-C:\Users\hamda\Documents\GitHub\soap-web-service-and-python-client\service\src\main\java\com\example\soap\Book.java
+C:\Users\hamda\Documents\GitHub\soap-web-service-and-python-client\service\src\main\java\com\example\soap\model\User.java
+C:\Users\hamda\Documents\GitHub\soap-web-service-and-python-client\service\src\main\java\com\example\soap\dao\BookDAO.java
+C:\Users\hamda\Documents\GitHub\soap-web-service-and-python-client\service\src\main\java\com\example\soap\PersistenceUtil.java
+C:\Users\hamda\Documents\GitHub\soap-web-service-and-python-client\service\src\main\java\com\example\soap\DBUtil.java
+C:\Users\hamda\Documents\GitHub\soap-web-service-and-python-client\service\src\main\java\com\example\soap\model\BookDTO.java
 C:\Users\hamda\Documents\GitHub\soap-web-service-and-python-client\service\src\main\java\com\example\soap\SoapService.java
+C:\Users\hamda\Documents\GitHub\soap-web-service-and-python-client\service\src\main\java\com\example\soap\config\AppConfig.java
 C:\Users\hamda\Documents\GitHub\soap-web-service-and-python-client\service\src\main\java\com\example\soap\SoapServicePublisher.java
 C:\Users\hamda\Documents\GitHub\soap-web-service-and-python-client\service\src\main\java\com\example\soap\SoapServiceImpl.java
+C:\Users\hamda\Documents\GitHub\soap-web-service-and-python-client\service\src\main\java\com\example\soap\dao\UserDAO.java
+C:\Users\hamda\Documents\GitHub\soap-web-service-and-python-client\service\src\main\java\com\example\soap\model\Book.java

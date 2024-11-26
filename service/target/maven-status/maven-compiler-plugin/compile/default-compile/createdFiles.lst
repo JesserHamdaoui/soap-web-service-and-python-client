@@ -1,5 +1,11 @@
-com\example\soap\Book.class
+com\example\soap\PersistenceUtil.class
 com\example\soap\SoapServicePublisher.class
-com\example\soap\User.class
+com\example\soap\config\AppConfig.class
+com\example\soap\DBUtil.class
+com\example\soap\model\BookDTO.class
+com\example\soap\dao\UserDAO.class
 com\example\soap\SoapService.class
+com\example\soap\dao\BookDAO.class
 com\example\soap\SoapServiceImpl.class
+com\example\soap\model\User.class
+com\example\soap\model\Book.class

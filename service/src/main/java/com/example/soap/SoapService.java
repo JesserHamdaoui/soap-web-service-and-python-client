@@ -1,5 +1,7 @@
 package com.example.soap;
 
+import com.example.soap.model.User;
+
 import javax.jws.WebMethod;
 import javax.jws.WebService;
 import java.util.List;
