@@ -19,6 +19,7 @@ public class Book {
 
     @ManyToOne
     @JoinColumn(name = "user_id")
+    @XmlTransient  // Exclude the user reference from XML serialization
     private User user;
 
     public Book(int id, String title, String author, String genre) {

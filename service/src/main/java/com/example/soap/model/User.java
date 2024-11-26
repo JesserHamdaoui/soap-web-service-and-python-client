@@ -1,6 +1,6 @@
 package com.example.soap.model;
 
-import com.example.soap.model.Book;
+import com.example.soap.model.BookDTO;
 
 import javax.persistence.*;
 import javax.jws.WebMethod;
@@ -21,6 +21,7 @@ public class User {
     private String password;
 
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @XmlTransient  // Exclude books field from XML serialization to avoid circular reference
     private List<Book> books = new ArrayList<>(); // Initialize the list of books
 
     // Constructor with parameters
@@ -77,14 +78,28 @@ public class User {
         this.password = password;
     }
 
+    // Change books to use BookDTO instead of Book
     @WebMethod
-    public List<Book> getBooks() {
-        return books;
+    public List<BookDTO> getBooks() {
+        List<BookDTO> bookDTOs = new ArrayList<>();
+        for (Book book : books) {
+            bookDTOs.add(new BookDTO(book.getId(), book.getTitle(), book.getAuthor(), book.getGenre()));
+        }
+        return bookDTOs;
     }
 
     @WebMethod
-    public void setBooks(List<Book> books) {
-        this.books = books;
+    public void setBooks(List<BookDTO> bookDTOs) {
+        // Optional: If you need to convert BookDTO back to Book entity, you can add logic here
+        this.books = new ArrayList<>();
+        for (BookDTO dto : bookDTOs) {
+            Book book = new Book();
+            book.setId(dto.getId());
+            book.setTitle(dto.getTitle());
+            book.setAuthor(dto.getAuthor());
+            book.setGenre(dto.getGenre());
+            this.books.add(book);
+        }
     }
 
     // Add convenience method to add a book

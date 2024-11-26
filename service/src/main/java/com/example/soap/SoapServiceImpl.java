@@ -242,7 +242,7 @@ public class SoapServiceImpl {
             User user = em.find(User.class, userId);
             if (user != null) {
                 List<BookDTO> bookDTOs = new ArrayList<>();
-                for (Book book : user.getBooks()) {
+                for (BookDTO book : user.getBooks()) {
                     bookDTOs.add(new BookDTO(book.getId(), book.getTitle(), book.getAuthor(), book.getGenre()));
                 }
                 return bookDTOs;
