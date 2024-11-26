@@ -58,6 +58,57 @@ public class SoapServiceImpl {
     }
 
     @WebMethod
+    public String updateUser(
+            @WebParam(name = "userId") int userId,
+            @WebParam(name = "name") String name,
+            @WebParam(name = "email") String email,
+            @WebParam(name = "password") String password) {
+        try {
+            em.getTransaction().begin();
+            User user = em.find(User.class, userId);
+
+            if (user == null) {
+                return "User not found";
+            }
+
+            user.setName(name);
+            user.setEmail(email);
+            user.setPassword(password);
+            em.merge(user); // Update the user
+            em.getTransaction().commit();
+            return "User updated successfully";
+        } catch (Exception e) {
+            e.printStackTrace();
+            if (em.getTransaction().isActive()) {
+                em.getTransaction().rollback();
+            }
+            return "Error: " + e.getMessage();
+        }
+    }
+
+    @WebMethod
+    public String deleteUser(@WebParam(name = "userId") int userId) {
+        try {
+            em.getTransaction().begin();
+            User user = em.find(User.class, userId);
+
+            if (user == null) {
+                return "User not found";
+            }
+
+            em.remove(user); // Delete the user
+            em.getTransaction().commit();
+            return "User deleted successfully";
+        } catch (Exception e) {
+            e.printStackTrace();
+            if (em.getTransaction().isActive()) {
+                em.getTransaction().rollback();
+            }
+            return "Error: " + e.getMessage();
+        }
+    }
+
+    @WebMethod
     public List<User> getAllUsers() {
         try {
             TypedQuery<User> query = em.createQuery("SELECT u FROM User u", User.class);
@@ -86,6 +137,57 @@ public class SoapServiceImpl {
             em.persist(book);
             em.getTransaction().commit();
             return "Book created successfully with ID: " + book.getId();
+        } catch (Exception e) {
+            e.printStackTrace();
+            if (em.getTransaction().isActive()) {
+                em.getTransaction().rollback();
+            }
+            return "Error: " + e.getMessage();
+        }
+    }
+
+    @WebMethod
+    public String updateBook(
+            @WebParam(name = "bookId") int bookId,
+            @WebParam(name = "title") String title,
+            @WebParam(name = "author") String author,
+            @WebParam(name = "genre") String genre) {
+        try {
+            em.getTransaction().begin();
+            Book book = em.find(Book.class, bookId);
+
+            if (book == null) {
+                return "Book not found";
+            }
+
+            book.setTitle(title);
+            book.setAuthor(author);
+            book.setGenre(genre);
+            em.merge(book); // Update the book
+            em.getTransaction().commit();
+            return "Book updated successfully";
+        } catch (Exception e) {
+            e.printStackTrace();
+            if (em.getTransaction().isActive()) {
+                em.getTransaction().rollback();
+            }
+            return "Error: " + e.getMessage();
+        }
+    }
+
+    @WebMethod
+    public String deleteBook(@WebParam(name = "bookId") int bookId) {
+        try {
+            em.getTransaction().begin();
+            Book book = em.find(Book.class, bookId);
+
+            if (book == null) {
+                return "Book not found";
+            }
+
+            em.remove(book); // Delete the book
+            em.getTransaction().commit();
+            return "Book deleted successfully";
         } catch (Exception e) {
             e.printStackTrace();
             if (em.getTransaction().isActive()) {
