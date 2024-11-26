@@ -10,7 +10,6 @@ import java.sql.SQLException;
 
 public class UserDAO {
 
-    // Create a new user
     public String createUser(User user) {
         String response = "User creation failed";
         try (Connection conn = PersistenceUtil.getConnection()) {
@@ -23,7 +22,7 @@ public class UserDAO {
                 if (rowsAffected > 0) {
                     try (ResultSet generatedKeys = stmt.getGeneratedKeys()) {
                         if (generatedKeys.next()) {
-                            user.setId(generatedKeys.getInt(1)); // Set auto-generated ID
+                            user.setId(generatedKeys.getInt(1));
                         }
                     }
                     response = "User created successfully with ID: " + user.getId();
@@ -36,7 +35,6 @@ public class UserDAO {
         return response;
     }
 
-    // Get user by ID
     public User getUserById(int id) {
         User user = null;
         try (Connection conn = PersistenceUtil.getConnection()) {

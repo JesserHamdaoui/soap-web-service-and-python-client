@@ -21,23 +21,21 @@ public class User {
     private String password;
 
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @XmlTransient  // Exclude books field from XML serialization to avoid circular reference
-    private List<Book> books = new ArrayList<>(); // Initialize the list of books
+    @XmlTransient
+    private List<Book> books = new ArrayList<>();
 
-    // Constructor with parameters
     public User(int id, String name, String email) {
         this.id = id;
         this.name = name;
         this.email = email;
-        this.books = new ArrayList<>(); // Ensure books list is initialized
+        this.books = new ArrayList<>();
     }
 
     // Default constructor
     public User() {
-        this.books = new ArrayList<>(); // Initialize the list to avoid null pointer
+        this.books = new ArrayList<>();
     }
 
-    // Getters and Setters
     @WebMethod
     public int getId() {
         return id;
@@ -78,7 +76,6 @@ public class User {
         this.password = password;
     }
 
-    // Change books to use BookDTO instead of Book
     @WebMethod
     public List<BookDTO> getBooks() {
         List<BookDTO> bookDTOs = new ArrayList<>();
@@ -90,7 +87,6 @@ public class User {
 
     @WebMethod
     public void setBooks(List<BookDTO> bookDTOs) {
-        // Optional: If you need to convert BookDTO back to Book entity, you can add logic here
         this.books = new ArrayList<>();
         for (BookDTO dto : bookDTOs) {
             Book book = new Book();
@@ -102,10 +98,9 @@ public class User {
         }
     }
 
-    // Add convenience method to add a book
     @WebMethod
     public void addBook(Book book) {
         books.add(book);
-        book.setUser(this);  // Set the user for the book
+        book.setUser(this);
     }
 }

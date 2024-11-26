@@ -10,12 +10,10 @@ public class DBUtil {
 
     private static final Dotenv dotenv = Dotenv.load();
 
-    // Database connection details
-    private static final String URL = dotenv.get("DB_URL"); // Fetch from .env file
-    private static final String USER = dotenv.get("DB_USER"); // Fetch from .env file
-    private static final String PASSWORD = dotenv.get("DB_PASSWORD"); // Fetch from .env file
+    private static final String URL = dotenv.get("DB_URL");
+    private static final String USER = dotenv.get("DB_USER");
+    private static final String PASSWORD = dotenv.get("DB_PASSWORD");
 
-    // Method to get database connection
     public static Connection getConnection() throws SQLException {
         return DriverManager.getConnection(URL, USER, PASSWORD);
     }

@@ -19,7 +19,7 @@ public class Book {
 
     @ManyToOne
     @JoinColumn(name = "user_id")
-    @XmlTransient  // Exclude the user reference from XML serialization
+    @XmlTransient
     private User user;
 
     public Book(int id, String title, String author, String genre) {
@@ -33,7 +33,6 @@ public class Book {
 
     }
 
-    // Getters and setters
     @WebMethod
     public int getId() {
         return id;

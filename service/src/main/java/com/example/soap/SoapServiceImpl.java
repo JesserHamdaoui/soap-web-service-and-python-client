@@ -30,9 +30,6 @@ public class SoapServiceImpl {
         em = emf.createEntityManager();
     }
 
-    // ========================================
-    // User Management Methods
-    // ========================================
 
     @WebMethod
     public String createUser(
@@ -118,10 +115,6 @@ public class SoapServiceImpl {
             return null;
         }
     }
-
-    // ========================================
-    // Book Management Methods
-    // ========================================
 
     @WebMethod
     public String createBook(

@@ -6,7 +6,6 @@ public class BookDTO {
     private String author;
     private String genre;
 
-    // Constructor
     public BookDTO(int id, String title, String author, String genre) {
         this.id = id;
         this.title = title;
@@ -14,7 +13,6 @@ public class BookDTO {
         this.genre = genre;
     }
 
-    // Getters and Setters
     public int getId() {
         return id;
     }

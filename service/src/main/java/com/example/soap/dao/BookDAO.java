@@ -10,7 +10,6 @@ import java.sql.SQLException;
 
 public class BookDAO {
 
-    // Create a new book in the database
     public String createBook(Book book) {
         String response = "Book creation failed";
         try (Connection conn = PersistenceUtil.getConnection()) {
@@ -23,7 +22,7 @@ public class BookDAO {
                 if (rowsAffected > 0) {
                     try (ResultSet generatedKeys = stmt.getGeneratedKeys()) {
                         if (generatedKeys.next()) {
-                            book.setId(generatedKeys.getInt(1)); // Set auto-generated ID
+                            book.setId(generatedKeys.getInt(1));
                         }
                     }
                     response = "Book created successfully with ID: " + book.getId();
@@ -36,7 +35,6 @@ public class BookDAO {
         return response;
     }
 
-    // Get a book by ID
     public Book getBookById(int id) {
         Book book = null;
         try (Connection conn = PersistenceUtil.getConnection()) {
