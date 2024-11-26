@@ -1,0 +1,5 @@
+com\example\soap\Book.class
+com\example\soap\SoapServicePublisher.class
+com\example\soap\User.class
+com\example\soap\SoapService.class
+com\example\soap\SoapServiceImpl.class

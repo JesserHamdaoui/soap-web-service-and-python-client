@@ -1,5 +1,6 @@
 package com.example.soap;
 
+import javax.jws.WebService;
 import java.util.ArrayList;
 import java.util.List;
 
